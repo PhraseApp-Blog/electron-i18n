@@ -1,5 +1,6 @@
 const i18n = require('i18next');
 const i18nextBackend = require('i18next-node-fs-backend');
+const config = require('../configs/app.config');
 
 const i18nextOptions = {
   backend:{
@@ -16,9 +17,8 @@ const i18nextOptions = {
     escapeValue: false
   },
   saveMissing: true,
-  lng: 'el',
-  fallbackLng: 'en',
-  whitelist: ['en', 'el'],
+  fallbackLng: config.fallbackLng,
+  whitelist: config.languages,
   react: {
     wait: false
   }

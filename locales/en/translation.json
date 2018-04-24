@@ -2,5 +2,21 @@
   "welcomeMessage": "Welcome to PhraseApp.com i18n",
   "helloMessage": "Hello PhraseApp",
   "linkEL": "Greek",
-  "linkEN": "English"
+  "linkEN": "English",
+  "PhraseApp i18n": "PhraseApp i18n",
+  "About PhraseApp i18n": "About PhraseApp i18n",
+  "Hide App": "Hide App",
+  "Hide Others": "Hide Others",
+  "Show All": "Show All",
+  "Quit": "Quit",
+  "View": "View",
+  "Reload": "Reload",
+  "Full Screen": "Full Screen",
+  "Minimize": "Minimize",
+  "Toggle Developer Tools": "Toggle Developer Tools",
+  "Help": "Help",
+  "About App": "About App",
+  "el": "Greek",
+  "en": "English",
+  "Language": "Language"
 }

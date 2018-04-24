@@ -1,10 +1,10 @@
-module.exports = (app, mainWindow) => {
+module.exports = (app, mainWindow, i18n) => {
   let menu = [
     {
-      label: '&File',
+      label: i18n.t('&File'),
       submenu: [
         {
-          label: '&Quit',
+          label: i18n.t('&Quit'),
           accelerator: 'Ctrl+Q',
           click: function () {
             app.quit();
@@ -16,21 +16,21 @@ module.exports = (app, mainWindow) => {
       label: 'View',
       submenu: [
         {
-          label: 'Reload',
+          label: i18n.t('Reload'),
           accelerator: 'Command+R',
           click: function (item, focusedWindow) {
             focusedWindow.reload();
           }
         },
         {
-          label: 'Full Screen',
+          label: i18n.t('Full Screen'),
           accelerator: 'Ctrl+Command+F',
           click: function (item, focusedWindow) {
             focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
           }
         },
         {
-          label: 'Minimize',
+          label: i18n.t('Minimize'),
           accelerator: 'Command+M',
           role: 'minimize'
         },
@@ -38,7 +38,7 @@ module.exports = (app, mainWindow) => {
           type: 'separator'
         },
         {
-          label: 'Toggle Developer Tools',
+          label: i18n.t('Toggle Developer Tools'),
           accelerator: 'Alt+Command+I',
           click: function (item, focusedWindow) {
             focusedWindow.webContents.toggleDevTools();
@@ -47,10 +47,10 @@ module.exports = (app, mainWindow) => {
       ]
     },
     {
-      label: 'Help',
+      label: i18n.t('Help'),
       submenu: [
         {
-          label: 'About App',
+          label: i18n.t('About App'),
           click: function (item, focusedWindow) {
             if (focusedWindow) {
             }

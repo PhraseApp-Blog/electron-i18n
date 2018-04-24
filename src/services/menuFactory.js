@@ -1,5 +1,6 @@
 const Menu = require('electron').Menu;
 const config = require('../configs/app.config');
+const i18n = require('../configs/i18next.config');
 
 const darwinTemplate = require('../menus/darwin-menu');
 const otherTemplate = require('../menus/other-menu');
@@ -15,11 +16,11 @@ function MenuFactoryService(menu) {
 
 function buildMenu(app, mainWindow) {
   if (config.platform === 'darwin') {
-    this.menu = Menu.buildFromTemplate(darwinTemplate(app, mainWindow));
+    this.menu = Menu.buildFromTemplate(darwinTemplate(app, mainWindow, i18n));
 
     Menu.setApplicationMenu(this.menu);
   } else {
-    this.menu = Menu.buildFromTemplate(otherTemplate(app, mainWindow));
+    this.menu = Menu.buildFromTemplate(otherTemplate(app, mainWindow, i18n));
     mainWindow.setMenu(this.menu)
   }
 }

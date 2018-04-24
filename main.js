@@ -43,7 +43,20 @@ function createAppWindow() {
   });
 
   installExtensions();
-  menuFactoryService.buildMenu(app, win);
+
+  i18n.on('loaded', (loaded) => {
+    i18n.changeLanguage('el')
+    i18n.off('loaded');
+  });
+
+  i18n.on('languageChanged', (lng) => {
+    menuFactoryService.buildMenu(app, win, i18n);
+    win.webContents.send('language-changed', {
+      language: lng,
+      namespace: config.namespace,
+      resource: i18n.getResourceBundle(lng, config.namespace)
+    });
+  });
 }
 
 app.on('ready', createAppWindow);
@@ -83,12 +96,14 @@ function installExtensions() {
 }
 
 ipcMain.on('get-initial-translations', (event, arg) => {
-  const initial = {
-    'el': {
-      'translation': i18n.getResourceBundle('el', 'translation')
-    }
-  };
-  event.returnValue = initial;
+  i18n.loadLanguages('el', (err, t) => {
+    const initial = {
+      'el': {
+        'translation': i18n.getResourceBundle('el', config.namespace)
+      }
+    };
+    event.returnValue = initial;
+  });
 });
 
 

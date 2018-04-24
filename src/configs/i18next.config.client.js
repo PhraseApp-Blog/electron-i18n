@@ -1,6 +1,7 @@
 const i18n = require('i18next');
 
 const reactI18nextModule = require('react-i18next').reactI18nextModule;
+const config = require('../configs/app.config');
 
 const i18nextOptions = {
   interpolation: {
@@ -8,8 +9,8 @@ const i18nextOptions = {
   },
   saveMissing: true,
   lng: 'el',
-  fallbackLng: 'en',
-  whitelist: ['en', 'el'],
+  fallbackLng: config.fallbackLng,
+  whitelist: config.languages,
   react: {
     wait: false
   }
