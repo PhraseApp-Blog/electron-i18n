@@ -84,8 +84,8 @@ function installExtensions() {
 
 ipcMain.on('get-initial-translations', (event, arg) => {
   const initial = {
-    'en': {
-      'translation': i18n.getResourceBundle('en', 'translation')
+    'el': {
+      'translation': i18n.getResourceBundle('el', 'translation')
     }
   };
   event.returnValue = initial;

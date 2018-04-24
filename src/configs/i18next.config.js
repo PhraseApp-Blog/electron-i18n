@@ -16,7 +16,7 @@ const i18nextOptions = {
     escapeValue: false
   },
   saveMissing: true,
-  lng: 'en',
+  lng: 'el',
   fallbackLng: 'en',
   whitelist: ['en', 'el'],
   react: {

@@ -1,3 +1,6 @@
 {
-  "welcomeMessage": "Welcome to PhraseApp.com i18n"
+  "welcomeMessage": "Welcome to PhraseApp.com i18n",
+  "helloMessage": "Hello PhraseApp",
+  "linkEL": "Greek",
+  "linkEN": "English"
 }

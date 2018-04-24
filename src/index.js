@@ -10,7 +10,7 @@ import './index.css';
 let initialI18nStore = ipcRenderer.sendSync('get-initial-translations');
 
 ReactDOM.render(
-  <I18nextProvider i18n={ i18n } initialI18nStore={ initialI18nStore } initialLanguage={ 'en' }>
+  <I18nextProvider i18n={ i18n } initialI18nStore={ initialI18nStore } initialLanguage="el">
     <App />
   </I18nextProvider>,
   document.getElementById('root')
