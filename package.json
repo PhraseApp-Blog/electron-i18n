@@ -1,0 +1,43 @@
+{
+  "homepage": "./src",
+  "name": "phrase-app-electron-i18n",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "electron": "cross-env NODE_ENV=development electron .",
+    "build": "react-app-rewired build",
+    "start": "react-app-rewired start",
+    "test": "react-app-rewired test --env=jsdom"
+  },
+  "keywords": [],
+  "author": "Theo Despoudis",
+  "license": "ISC",
+  "build": {
+    "appId": "com.phraseApp.phraseApp-i18n-electron",
+    "win": {
+      "iconUrl": "https://cdn2.iconfinder.com/data/icons/designer-skills/128/react-256.png"
+    },
+    "directories": {
+      "buildResources": "public"
+    }
+  },
+  "devDependencies": {
+    "electron": "^1.8.4",
+    "electron-devtools-installer": "^2.2.3",
+    "react-app-rewired": "^1.5.0",
+    "react-scripts": "^1.1.4",
+    "webpack": "^3.11.0",
+    "webpack-target-electron-renderer": "^0.4.0"
+  },
+  "dependencies": {
+    "awilix": "^3.0.7",
+    "cross-env": "^5.1.4",
+    "i18next": "^11.2.3",
+    "i18next-node-fs-backend": "^1.0.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-hot-loader": "^4.1.1",
+    "react-i18next": "^7.6.0"
+  }
+}
