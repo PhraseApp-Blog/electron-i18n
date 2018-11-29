@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <I18n>
         {
-          (t, { i18n }) => (
+          (t) => (
             <div className="App">
               <div className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
