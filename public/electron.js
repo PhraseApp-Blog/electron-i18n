@@ -1,16 +1,14 @@
 const electron = require('electron');
 const path = require('path');
 const url = require('url');
-const { default: installExtension, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } =
-  require('electron-devtools-installer');
 
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 const ipcMain = electron.ipcMain;
 
-const menuFactoryService = require('./src/services/menuFactory');
-const i18n = require('./src/configs/i18next.config');
-const config = require('./src/configs/app.config');
+const menuFactoryService = require('../src/services/menuFactory');
+const i18n = require('../src/configs/i18next.config');
+const config = require('../src/configs/app.config');
 
 const iconPath = path.join(__dirname, '/assets/phrase-app-icon.png');
 
@@ -24,6 +22,9 @@ function createAppWindow() {
     'minHeight': 600,
     icon: iconPath,
     title: config.title,
+    webPreferences: {
+      nodeIntegration: true
+    }
   });
 
   const baseUrl = `http://localhost:${config.port}`;
@@ -42,7 +43,7 @@ function createAppWindow() {
     win = null;
   });
 
-  installExtensions();
+  // installExtensions();
 
   i18n.on('loaded', (loaded) => {
     i18n.changeLanguage('el')
@@ -79,21 +80,21 @@ app.on('activate', function() {
 });
 
 
-function installExtensions() {
-  if (process.env.NODE_ENV === 'development') {
-    // Open the DevTools.
-    win.webContents.openDevTools();
+// function installExtensions() {
+//   if (process.env.NODE_ENV === 'development') {
+//     // Open the DevTools.
+//     win.webContents.openDevTools();
 
-    // Install extensions
-    installExtension(REACT_DEVELOPER_TOOLS)
-      .then(name => console.log(`Added Extension:  ${name}`))
-      .catch(err => console.log('An error occurred: ', err));
+//     // Install extensions
+//     installExtension(REACT_DEVELOPER_TOOLS)
+//       .then(name => console.log(`Added Extension:  ${name}`))
+//       .catch(err => console.log('An error occurred: ', err));
 
-    installExtension(REDUX_DEVTOOLS)
-      .then(name => console.log(`Added Extension:  ${name}`))
-      .catch(err => console.log('An error occurred: ', err));
-  }
-}
+//     installExtension(REDUX_DEVTOOLS)
+//       .then(name => console.log(`Added Extension:  ${name}`))
+//       .catch(err => console.log('An error occurred: ', err));
+//   }
+// }
 
 ipcMain.on('get-initial-translations', (event, arg) => {
   i18n.loadLanguages('el', (err, t) => {

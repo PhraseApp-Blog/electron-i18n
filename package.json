@@ -1,43 +1,65 @@
 {
-  "homepage": "./src",
+  "homepage": "./",
   "name": "phrase-app-electron-i18n",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "public/electron.js",
   "scripts": {
-    "electron": "cross-env NODE_ENV=development electron .",
     "build": "react-app-rewired build",
     "start": "react-app-rewired start",
-    "test": "react-app-rewired test --env=jsdom"
+    "test": "react-app-rewired test --env=jsdom",
+    "electron": "concurrently --kill-others \"BROWSER=none npm run start\" \"wait-on http://localhost:3000 && electron .\"",
+    "postinstall": "electron-builder install-app-deps",
+    "preelectron-pack": "npm run build",
+    "electron-pack": "electron-builder -c.extraMetadata.main=build/electron.js ."
   },
   "keywords": [],
   "author": "Theo Despoudis",
   "license": "ISC",
   "build": {
     "appId": "com.phraseApp.phraseApp-i18n-electron",
-    "win": {
-      "iconUrl": "https://cdn2.iconfinder.com/data/icons/designer-skills/128/react-256.png"
+    "mac": {
+      "category": "public.app-category.utilities"
     },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
     "directories": {
-      "buildResources": "public"
+      "buildResources": "static"
     }
   },
   "devDependencies": {
-    "electron": "^1.8.4",
-    "electron-devtools-installer": "^2.2.3",
-    "react-app-rewired": "^1.5.0",
-    "react-scripts": "^1.1.4",
-    "webpack": "^3.11.0",
+    "concurrently": "^4.1.0",
+    "electron": "^5.0.0",
+    "electron-builder": "^20.39.0",
+    "electron-devtools-installer": "^2.2.4",
+    "react-app-rewired": "^2.1.3",
+    "react-scripts": "^3.0.0",
+    "wait-on": "^3.2.0",
+    "webpack": "^4.29.6",
     "webpack-target-electron-renderer": "^0.4.0"
   },
   "dependencies": {
     "awilix": "^3.0.7",
     "cross-env": "^5.1.4",
-    "i18next": "^11.2.3",
-    "i18next-node-fs-backend": "^1.0.0",
+    "i18next": "^15.1.0",
+    "i18next-node-fs-backend": "^2.1.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-hot-loader": "^4.1.1",
-    "react-i18next": "^7.6.0"
+    "react-hot-loader": "^4.8.4",
+    "react-i18next": "^9.0.10"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
